@@ -10,12 +10,31 @@ package banking;
  * @author Abdul Aziz
  */
 public class EActionPanel extends javax.swing.JPanel {
-
+    
+    private SSBank parent;
     /**
      * Creates new form EActionPanel
      */
     public EActionPanel() {
         initComponents();
+    }
+    public void setParent(SSBank parent)
+    {
+        this.parent=parent;
+    }
+    
+    public void hideAdminComponents()
+    {
+        manageBranchButton.setVisible(false);
+    }
+    public void hideManagerComponents()
+    {
+        manageEmpButton.setVisible(false);
+    }
+    public void showAllComponents()
+    {
+        manageBranchButton.setVisible(true);
+        manageEmpButton.setVisible(true);
     }
 
     /**
@@ -28,113 +47,150 @@ public class EActionPanel extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        addBranchButton = new javax.swing.JButton();
-        addEmpButton = new javax.swing.JButton();
-        runQueryButton = new javax.swing.JButton();
-        searchCustButton = new javax.swing.JButton();
-        addCustButton = new javax.swing.JButton();
-        addAccButton = new javax.swing.JButton();
-        modEmpButton = new javax.swing.JButton();
-        modCustButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        manageBranchButton = new javax.swing.JButton();
+        manageEmpButton = new javax.swing.JButton();
+        manageCustButton = new javax.swing.JButton();
+        manageAccButton = new javax.swing.JButton();
+        depwithdrawButton = new javax.swing.JButton();
+        manageLoanButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
+        transactButton = new javax.swing.JButton();
 
         setLayout(new java.awt.GridBagLayout());
 
-        addBranchButton.setText("Add Branch");
-        addBranchButton.addActionListener(new java.awt.event.ActionListener() {
+        manageBranchButton.setText("Manage Branches");
+        manageBranchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBranchButtonActionPerformed(evt);
+                manageBranchButtonActionPerformed(evt);
             }
         });
-        add(addBranchButton, new java.awt.GridBagConstraints());
+        add(manageBranchButton, new java.awt.GridBagConstraints());
 
-        addEmpButton.setText("Add Employee");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        add(addEmpButton, gridBagConstraints);
-
-        runQueryButton.setText("Run Query");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        add(runQueryButton, gridBagConstraints);
-
-        searchCustButton.setText("Search Customers");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        add(searchCustButton, gridBagConstraints);
-
-        addCustButton.setText("Add Customer");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        add(addCustButton, gridBagConstraints);
-
-        addAccButton.setText("Add Account");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        add(addAccButton, gridBagConstraints);
-
-        modEmpButton.setText("Modify Employee");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        add(modEmpButton, gridBagConstraints);
-
-        modCustButton.setText("Modify Customer");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        add(modCustButton, gridBagConstraints);
-
-        jButton1.setText("Modify Branch");
+        manageEmpButton.setText("Manage Employees");
+        manageEmpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageEmpButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        add(jButton1, gridBagConstraints);
+        add(manageEmpButton, gridBagConstraints);
 
-        jButton2.setText("Modify Account");
+        manageCustButton.setText("Manage Customer");
+        manageCustButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageCustButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        add(jButton2, gridBagConstraints);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        add(manageCustButton, gridBagConstraints);
 
-        jButton3.setText("Search Employee");
+        manageAccButton.setText("Manage Account");
+        manageAccButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageAccButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        add(jButton3, gridBagConstraints);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        add(manageAccButton, gridBagConstraints);
 
-        jButton4.setText("Deposit/Withdraw");
+        depwithdrawButton.setText("Deposit/Withdraw");
+        depwithdrawButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depwithdrawButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        add(depwithdrawButton, gridBagConstraints);
+
+        manageLoanButton.setText("Manage Loans");
+        manageLoanButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageLoanButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        add(manageLoanButton, gridBagConstraints);
+
+        logoutButton.setText("Log Out");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        add(jButton4, gridBagConstraints);
+        gridBagConstraints.gridwidth = 2;
+        add(logoutButton, gridBagConstraints);
+
+        transactButton.setText("Transact");
+        transactButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transactButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        add(transactButton, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addBranchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBranchButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addBranchButtonActionPerformed
+    private void manageBranchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageBranchButtonActionPerformed
+        parent.changeCard("card5");        // TODO add your handling code here:
+    }//GEN-LAST:event_manageBranchButtonActionPerformed
+
+    private void manageAccButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAccButtonActionPerformed
+        parent.changeCard("card4");                // TODO add your handling code here:
+    }//GEN-LAST:event_manageAccButtonActionPerformed
+
+    private void manageEmpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmpButtonActionPerformed
+        parent.changeCard("card8");        // TODO add your handling code here:
+    }//GEN-LAST:event_manageEmpButtonActionPerformed
+
+    private void manageCustButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCustButtonActionPerformed
+        parent.changeCard("card6");        // TODO add your handling code here:
+    }//GEN-LAST:event_manageCustButtonActionPerformed
+
+    private void manageLoanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageLoanButtonActionPerformed
+        parent.changeCard("card9");        // TODO add your handling code here:
+    }//GEN-LAST:event_manageLoanButtonActionPerformed
+
+    private void depwithdrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depwithdrawButtonActionPerformed
+        parent.changeCard("card7");// TODO add your handling code here:
+    }//GEN-LAST:event_depwithdrawButtonActionPerformed
+
+    private void transactButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactButtonActionPerformed
+        parent.changeCard("card10");// TODO add your handling code here:
+    }//GEN-LAST:event_transactButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        parent.actionlogout();// TODO add your handling code here:
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addAccButton;
-    private javax.swing.JButton addBranchButton;
-    private javax.swing.JButton addCustButton;
-    private javax.swing.JButton addEmpButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton modCustButton;
-    private javax.swing.JButton modEmpButton;
-    private javax.swing.JButton runQueryButton;
-    private javax.swing.JButton searchCustButton;
+    private javax.swing.JButton depwithdrawButton;
+    private javax.swing.JButton logoutButton;
+    private javax.swing.JButton manageAccButton;
+    private javax.swing.JButton manageBranchButton;
+    private javax.swing.JButton manageCustButton;
+    private javax.swing.JButton manageEmpButton;
+    private javax.swing.JButton manageLoanButton;
+    private javax.swing.JButton transactButton;
     // End of variables declaration//GEN-END:variables
 }

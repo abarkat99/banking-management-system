@@ -5,6 +5,7 @@
  */
 package banking;
 
+import java.awt.CardLayout;
 import java.sql.*;
 /**
  *
@@ -12,12 +13,21 @@ import java.sql.*;
  */
 public class SSBank extends javax.swing.JFrame {
 
+    Session session;
     /**
      * Creates new form SSBank
      */
     public SSBank() {
         initComponents();
         eLoginPanel1.setParent(this);
+        eActionPanel2.setParent(this);
+        accountMgmtPanel1.setParent(this);
+        branchMgmtJPanel1.setParent(this);
+        custMgmtPanel1.setParent(this);
+        deposit_WithdrawPanel1.setParent(this);
+        empMgmtPanel1.setParent(this);
+        loanMgmtPanel1.setParent(this);
+        transactPanel1.setParent(this);
     }
 
     /**
@@ -30,18 +40,53 @@ public class SSBank extends javax.swing.JFrame {
     private void initComponents() {
 
         eLoginPanel1 = new banking.ELoginPanel();
+        eActionPanel2 = new banking.EActionPanel();
+        accountMgmtPanel1 = new banking.AccountMgmtPanel();
+        branchMgmtJPanel1 = new banking.BranchMgmtJPanel();
+        custMgmtPanel1 = new banking.CustMgmtPanel();
+        deposit_WithdrawPanel1 = new banking.Deposit_WithdrawPanel();
+        empMgmtPanel1 = new banking.EmpMgmtPanel();
+        loanMgmtPanel1 = new banking.LoanMgmtPanel();
+        transactPanel1 = new banking.TransactPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
         getContentPane().add(eLoginPanel1, "card2");
+        getContentPane().add(eActionPanel2, "card3");
+        getContentPane().add(accountMgmtPanel1, "card4");
+        getContentPane().add(branchMgmtJPanel1, "card5");
+        getContentPane().add(custMgmtPanel1, "card6");
+        getContentPane().add(deposit_WithdrawPanel1, "card7");
+        getContentPane().add(empMgmtPanel1, "card8");
+        getContentPane().add(loanMgmtPanel1, "card9");
+        getContentPane().add(transactPanel1, "card10");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     public void actionLogin(String uname,String pwd)
     {
-        Session session=new Session(uname,pwd);
-        
+        session=new Session(uname,pwd);
+        changeCard("card3");
+        if(session.pl<3)
+            eActionPanel2.hideAdminComponents();
+        if(session.pl<2)
+            eActionPanel2.hideManagerComponents();
+        empMgmtPanel1.onLogin();
+    }
+    public void changeCard(String cname)
+    {
+        CardLayout card=(CardLayout)getContentPane().getLayout();
+        card.show(getContentPane(),cname);
+    }
+    public void actionlogout()
+    {
+        session=null;
+        changeCard("card2");
+        SSBank newframe=new SSBank();
+        newframe.setBounds(this.getBounds());
+        newframe.setVisible(true);
+        this.dispose();
     }
     /**
      * @param args the command line arguments
@@ -79,6 +124,14 @@ public class SSBank extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private banking.AccountMgmtPanel accountMgmtPanel1;
+    private banking.BranchMgmtJPanel branchMgmtJPanel1;
+    private banking.CustMgmtPanel custMgmtPanel1;
+    private banking.Deposit_WithdrawPanel deposit_WithdrawPanel1;
+    private banking.EActionPanel eActionPanel2;
     private banking.ELoginPanel eLoginPanel1;
+    private banking.EmpMgmtPanel empMgmtPanel1;
+    private banking.LoanMgmtPanel loanMgmtPanel1;
+    private banking.TransactPanel transactPanel1;
     // End of variables declaration//GEN-END:variables
 }

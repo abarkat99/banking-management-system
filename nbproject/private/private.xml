@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Abdul%20Aziz/NetbeansProject/Banking/src/banking/Session.java</file>
-            <file>file:/D:/Abdul%20Aziz/NetbeansProject/Banking/src/banking/EActionPanel.java</file>
+            <file>file:/D:/Abdul%20Aziz/NetbeansProject/Banking/src/banking/TransactPanel.java</file>
+            <file>file:/D:/Abdul%20Aziz/NetbeansProject/Banking/src/banking/AccountMgmtPanel.java</file>
+            <file>file:/D:/Abdul%20Aziz/NetbeansProject/Banking/src/banking/LoanMgmtPanel.java</file>
             <file>file:/D:/Abdul%20Aziz/NetbeansProject/Banking/src/banking/SSBank.java</file>
-            <file>file:/D:/Abdul%20Aziz/NetbeansProject/Banking/src/banking/Banking.java</file>
-            <file>file:/D:/Abdul%20Aziz/NetbeansProject/Banking/src/banking/ELoginPanel.java</file>
+            <file>file:/D:/Abdul%20Aziz/NetbeansProject/Banking/src/banking/CustMgmtPanel.java</file>
         </group>
     </open-files>
 </project-private>

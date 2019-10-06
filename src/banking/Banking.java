@@ -23,7 +23,7 @@ public class Banking {
             b.createdb();
         else
             System.out.println("Database exists");
-        new SSBank().setVisible(true);
+        SSBank.main(null);
 
     }
     boolean checkdbexists()
